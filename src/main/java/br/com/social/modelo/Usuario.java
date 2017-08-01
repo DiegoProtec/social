@@ -2,28 +2,37 @@ package br.com.social.modelo;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 @Entity
-@Table(name = "tb_usuario")
+@Table(name = "tb_usuario", uniqueConstraints = @UniqueConstraint(columnNames = { "email_usuario" }))
 public class Usuario {
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id_usuario")
+	private int id;
+
 	@Column(name = "email_usuario")
 	private String email;
-	
+
 	@Column(name = "senha_usuario")
 	private String senha;
-	
+
 	@Column(name = "nome_usuario")
 	private String nome;
-	
-	@Column(name = "sobrenome_usuario")
-	private String sobrenome;
-	
-	@Column(name = "telefone_usuario")
-	private String telefone;
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
 
 	public String getEmail() {
 		return email;
@@ -49,20 +58,9 @@ public class Usuario {
 		this.nome = nome;
 	}
 
-	public String getSobrenome() {
-		return sobrenome;
-	}
-
-	public void setSobrenome(String sobrenome) {
-		this.sobrenome = sobrenome;
-	}
-
-	public String getTelefone() {
-		return telefone;
-	}
-
-	public void setTelefone(String telefone) {
-		this.telefone = telefone;
+	@Override
+	public String toString() {
+		return "usuario: " + getEmail();
 	}
 
 }

@@ -22,4 +22,5 @@ public class LoginBean {
 	public void cadastrar() {
 		System.out.println(usuario + " cadastrado com sucesso!");
 	}
+
 }

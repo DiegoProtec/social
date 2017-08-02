@@ -10,7 +10,7 @@
 
 	<div>
 		<h:outputLabel value="e-mail:" for="email" />
-		<h:inputText id="email" value="#{loginBean.usuario.email}"
+		<h:inputText id="email" value="#{usuarioBean.usuario.email}"
 			required="true">
 			<f:passThroughAttribute name="type" value="email" />
 		</h:inputText>
@@ -18,18 +18,18 @@
 
 	<div>
 		<h:outputLabel value="senha:" for="senha" />
-		<h:inputSecret id="senha" value="#{loginBean.usuario.senha}"
+		<h:inputSecret id="senha" value="#{usuarioBean.usuario.senha}"
 			required="true" />
 	</div>
 	
 	<div>
 		<h:outputLabel value="nome:" for="nome" />
-		<h:inputText id="nome" value="#{loginBean.usuario.nome}"
+		<h:inputText id="nome" value="#{usuarioBean.usuario.nome}"
 			required="true" />
 	</div>
 
 	<div>
-		<h:commandButton value="Cadastrar" action="#{loginBean.cadastrar}"/>
+		<h:commandButton value="Cadastrar" action="#{usuarioBean.cadastrar}"/>
 	</div>
 
 </h:form>

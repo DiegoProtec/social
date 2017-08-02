@@ -1,10 +1,15 @@
 package br.com.social.modelo;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
@@ -15,7 +20,7 @@ public class Usuario {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_usuario")
-	private int id;
+	private Integer id;
 
 	@Column(name = "email_usuario")
 	private String email;
@@ -26,7 +31,10 @@ public class Usuario {
 	@Column(name = "nome_usuario")
 	private String nome;
 
-	public int getId() {
+	@OneToMany(mappedBy = "usuario", targetEntity = Mensagem.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private List<Mensagem> mensagens;
+
+	public Integer getId() {
 		return id;
 	}
 
